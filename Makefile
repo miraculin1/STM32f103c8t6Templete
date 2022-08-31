@@ -67,7 +67,7 @@ CFLAGS += -MMD -MP -MF"$(BUILD_DIR)/$(notdir $(@:%.o=%.d))"
 
 # link script
 # this file define memory map/section stack location and size
-LDSCRIPT = ./stm32f103c8tx.ld
+LDSCRIPT = ./STM32F103C8Tx_FLASH.ld
 
 #LIBS = -lc -lm -lnosys
 # lc stand for standard c LIB
@@ -126,7 +126,7 @@ clean:
 	-rm -fR $(BUILD_DIR)
 
 burn: all
-	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x08000000
+	st-flash --reset write $(BUILD_DIR)/$(TARGET).bin 0x08000000
 #######################################
 # dependencies
 #######################################
